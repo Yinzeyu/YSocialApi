@@ -41,7 +41,6 @@ class WXPayCallbackActivity : Activity(), IWXAPIEventHandler {
         mWXHandler.callbackWXEventHandler(resp)
       } catch (var3: Exception) {
       }
-
     }
     finish()
     overridePendingTransition(0, 0)

@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.os.Handler
 import android.os.Message
+import com.alipay.sdk.app.AuthTask
+import com.alipay.sdk.app.PayTask
 import com.yin.sociallibrary.callback.AuthCallback
 import com.yin.sociallibrary.callback.OperationCallback
 import com.yin.sociallibrary.callback.PayCallback
@@ -17,8 +19,6 @@ import com.yin.sociallibrary.entity.content.PayContent
 import com.yin.sociallibrary.entity.platform.AliPlatConfigBean
 import com.yin.sociallibrary.entity.platform.PlatformConfig
 import com.yin.sociallibrary.handler.SSOHandler
-import com.alipay.sdk.app.AuthTask
-import com.alipay.sdk.app.PayTask
 
 
 /**
@@ -91,8 +91,7 @@ class AliHandler(context: Context, config: PlatformConfig) : SSOHandler() {
     Thread {
       // 构造AuthTask 对象
       // 调用授权接口，获取授权结果
-      val result = PayTask(activity)
-        .payV2(payInfo.replace("&amp", "&"), true)
+      val result = PayTask(activity).payV2(payInfo.replace("&amp", "&"), true)
       val msg = Message()
       msg.arg1 = SDK_PAY_FLAG
       msg.obj = result

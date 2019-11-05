@@ -13,7 +13,6 @@ import com.yin.sociallibrary.config.SocialConstants
 import com.yin.sociallibrary.entity.platform.PlatformConfig
 import com.yin.sociallibrary.handler.SSOHandler
 import com.tencent.mm.opensdk.constants.ConstantsAPI
-import com.tencent.mm.opensdk.modelbase.BaseReq
 import com.tencent.mm.opensdk.modelbase.BaseResp
 import com.tencent.mm.opensdk.modelmsg.SendAuth
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX
@@ -23,7 +22,6 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.modelpay.PayResp
 import com.tencent.mm.opensdk.openapi.IWXAPI
-import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.yin.sociallibrary.entity.content.*
 import com.yin.sociallibrary.extention.*
