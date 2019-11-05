@@ -30,12 +30,11 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.5.7'
-    implementation  'com.sina.weibo.sdk:core:4.4.1:openDefaultRelease@aar'
+    implementation 'com.sina.weibo.sdk:core:4.4.1:openDefaultRelease@aar'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation files('libs/alipaySdk-15.6.8-20191021122455-noUtdid.aar')
 }
-// 项目引用的版本号，比如compile 'com.yanzhenjie:andserver:1.0.1'中的1.0.1就是这里配置的。
 version = "3.0.0"
 
 // 定义两个链接，下面会用到。
@@ -92,6 +91,8 @@ task sourcesJar(type: Jar) {
 // 生成jarDoc的task，不需要修改。
 task javadoc(type: Javadoc) {
     options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+    options.setMemberLevel(JavadocMemberLevel.PUBLIC)
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
     // destinationDir = file("../javadoc/")
@@ -127,10 +128,6 @@ bintray {
         publish = true // 是否是公开项目。
     }
 }
-repositories {
-    mavenCentral()
-}
-
 ///** 以下开始是将Android Library上传到jcenter的相关配置**/
 //apply plugin: 'com.novoda.bintray-release' //添加
 ////项目主页
