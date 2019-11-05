@@ -26,6 +26,11 @@ android {
         abortOnError false
     }
 }
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
@@ -33,14 +38,15 @@ dependencies {
     implementation 'com.sina.weibo.sdk:core:4.4.1:openDefaultRelease@aar'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation files('libs/alipaySdk-15.6.8-20191021122455-noUtdid.aar')
+    implementation(name: 'alipaySdk-15.6.8-20191021122455-noUtdid', ext: 'aar') // yourLib.aar is put in libs folder
+//    implementation files('libs/alipaySdk-15.6.8-20191021122455-noUtdid.aar')
 }
-version = "3.0.0"
+version = "3.0.3"
 
 // 定义两个链接，下面会用到。
-def siteUrl = 'https://github.com/apiosource/YSocialApi'
+def siteUrl = 'https://github.com/Yinzeyu/YSocialApi'
 // 项目主页。
-def gitUrl = 'https://github.com/apiosource/YSocialApi.git'
+def gitUrl = 'https://github.com/Yinzeyu/YSocialApi.git'
 // Git仓库的url。
 
 // 唯一包名，比如compile 'com.yanzhenjie:andserver:1.0.1'中的com.yanzhenjie就是这里配置的。
@@ -70,7 +76,7 @@ install {
                         id 'yinzeyu' // 开发者的id。
                         name 'yinzeyu' // 开发者名字。
                         email 'yin974415243@gmail.com' // 开发者邮箱。
-                    }
+                }
                 }
 
                 // SCM，复制我的，这里不需要修改。
@@ -120,8 +126,7 @@ bintray {
         repo = "maven"
         // 上传到maven库。（这里要特别注意，如果写了maven报404错误，请在bintray创建一个仓库，这里填改成你创建的仓库的名字，如何创建请看下图。）
         name = "YSocialApi"
-        // 发布到Bintray上的项目名字，这里的名字不是compile 'com.yanzhenjie:andserver:1.0.1'中的andserver。
-        userOrg = 'yzys' // Bintray的用户名，2016年11月更新。
+        userOrg = 'yuge'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
