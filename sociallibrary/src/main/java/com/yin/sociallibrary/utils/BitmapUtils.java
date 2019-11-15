@@ -9,11 +9,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/**
- * description:  Bitmap相关工具类
- * @date 2019/7/15
- *  * @author: yzy.
- *  */
 public class BitmapUtils {
 
   /**

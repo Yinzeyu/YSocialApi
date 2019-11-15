@@ -7,11 +7,7 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * description :
- * @date 2019/7/15
- * @author: yzy.
- */
+
 public class FileIOUtils {
 
   private static int sBufferSize = 8192;
