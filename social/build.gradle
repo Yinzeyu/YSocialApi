@@ -1,18 +1,17 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-//apply from: './bintray.gradle'
 android {
-  compileSdkVersion 29
+  compileSdkVersion rootProject.ext.android.compileSdkVersion
+  buildToolsVersion rootProject.ext.android.buildToolsVersion
   defaultConfig {
-    minSdkVersion 21
-    targetSdkVersion 29
-    versionCode 1
-    versionName "1.0"
+    minSdkVersion rootProject.ext.android.minSdkVersion
+    targetSdkVersion rootProject.ext.android.targetSdkVersion
+    versionCode rootProject.ext.android.versionCode
+    versionName rootProject.ext.android.versionName
   }
   compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
+    sourceCompatibility rootProject.ext.android.javaSourceCompatibility
+    targetCompatibility rootProject.ext.android.javaTargetCompatibility
   }
   lintOptions {
     checkReleaseBuilds false
@@ -29,15 +28,15 @@ dependencies {
   api fileTree(include: ['*.jar'], dir: 'libs')
   api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.5.7'
   implementation 'com.sina.weibo.sdk:core:4.4.1:openDefaultRelease@aar'
-  implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation rootProject.ext.dependencies.kotlin_jdk
+  implementation rootProject.ext.dependencies.appcompat_v7
   compileOnly  files('libs/alipaySdk-15.6.8-20191021122514.aar')
-//    implementation(name: 'alipaySdk-15.6.8-20191021122514', ext: 'aar')
+//  implementation(name: 'alipaySdk-15.6.8-20191021122514', ext: 'aar')
 }
 
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "1.0.0"
+version = "2.0.2"
 
 // 定义两个链接，下面会用到。
 def siteUrl = 'https://github.com/apiosource/YSocialApi'
