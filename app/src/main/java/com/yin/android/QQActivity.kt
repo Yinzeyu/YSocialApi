@@ -9,9 +9,9 @@ import android.graphics.Paint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aimymusic.aimysociallib.URL
-import com.yin.sociallibrary.Social
-import com.yin.sociallibrary.config.PlatformType
-import com.yin.sociallibrary.utils.CallbackDataUtil
+import com.yin.social.Social
+import com.yin.social.config.PlatformType
+import com.yin.social.utils.CallbackDataUtil
 import kotlinx.android.synthetic.main.activity_qq.*
 
 class QQActivity : AppCompatActivity() {
@@ -32,7 +32,7 @@ class QQActivity : AppCompatActivity() {
 
   private fun initEvent() {
     btn_qq_auth.setOnClickListener {
-      Social.auth(this, PlatformType.QQ,
+      com.yin.social.Social.auth(this, PlatformType.QQ,
         onSuccess = { type, map ->
 //          toast("$type 登录成功")
           map?.let {
@@ -46,7 +46,7 @@ class QQActivity : AppCompatActivity() {
     }
 
     btn_qq_share_img.setOnClickListener {
-     Social.share(this, getType(),
+     com.yin.social.Social.share(this, getType(),
           img = createBitmap(),                  // 除了分享文本外，其他分享img都必须传
           onSuccess = { type ->
 //            toast("$type 分享成功")
@@ -57,7 +57,7 @@ class QQActivity : AppCompatActivity() {
           onCancel = {_ -> })
     }
     btn_qq_share_music.setOnClickListener {
-      Social.share(this, getType(),
+      com.yin.social.Social.share(this, getType(),
           img = createBitmap(),                  // img必须传
           title = "test",
           musicUrl = URL.AUDIO_URL, // 必须传
@@ -72,7 +72,7 @@ class QQActivity : AppCompatActivity() {
           onCancel = {_ -> })
     }
     btn_qq_share_video.setOnClickListener {
-     Social.share(this, getType(),
+     com.yin.social.Social.share(this, getType(),
           img = createBitmap(),                  // img必须传
           title = "test",
           videoUrl = URL.VIDEO_URL, // 必须传
@@ -87,7 +87,7 @@ class QQActivity : AppCompatActivity() {
           onCancel = {_ -> })
     }
     btn_qq_share_text.setOnClickListener {
-     Social.share(this, getType(),
+     com.yin.social.Social.share(this, getType(),
           text = "测试",   // 必传
           onSuccess = { type ->
 //            toast("$type 分享成功")
@@ -98,7 +98,7 @@ class QQActivity : AppCompatActivity() {
           onCancel = {_ -> })
     }
     btn_qq_share_web.setOnClickListener {
-     Social.share(this, getType(),
+     com.yin.social.Social.share(this, getType(),
           img = createBitmap(),      // img必须传
           title = "test",
           webUrl = URL.WEB_URL,     // 网页必传
@@ -133,6 +133,6 @@ class QQActivity : AppCompatActivity() {
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
-   Social.onActivityResult(requestCode, resultCode, data)
+   com.yin.social.Social.onActivityResult(requestCode, resultCode, data)
   }
 }

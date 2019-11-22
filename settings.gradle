@@ -1,1 +1,2 @@
-include ':app', ':sociallibrary'
+include ':app', ':social'
+

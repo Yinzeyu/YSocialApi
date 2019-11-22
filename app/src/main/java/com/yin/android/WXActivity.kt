@@ -9,9 +9,9 @@ import android.graphics.Paint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aimymusic.aimysociallib.URL
-import com.yin.sociallibrary.Social
-import com.yin.sociallibrary.config.PlatformType
-import com.yin.sociallibrary.utils.CallbackDataUtil
+import com.yin.social.Social
+import com.yin.social.config.PlatformType
+import com.yin.social.utils.CallbackDataUtil
 import kotlinx.android.synthetic.main.activity_wxshare.*
 
 class WXActivity : AppCompatActivity() {
@@ -32,12 +32,12 @@ class WXActivity : AppCompatActivity() {
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
-    Social.onActivityResult(requestCode, resultCode, data)
+    com.yin.social.Social.onActivityResult(requestCode, resultCode, data)
   }
 
   private fun initEvent() {
     btn_wx_share_img.setOnClickListener {
-      Social.share(this, getType(),
+      com.yin.social.Social.share(this, getType(),
         img = createBitmap(),                  // 除了分享文本外，其他分享img都必须传
         onSuccess = { type ->
 //          toast("$type 分享成功")
@@ -48,7 +48,7 @@ class WXActivity : AppCompatActivity() {
         onCancel = { _ -> })
     }
     btn_wx_share_music.setOnClickListener {
-      Social.share(this, getType(),
+      com.yin.social.Social.share(this, getType(),
         img = createBitmap(),                  // img必须传
         title = "test",
         musicUrl = URL.AUDIO_URL, // 必须传
@@ -63,7 +63,7 @@ class WXActivity : AppCompatActivity() {
         onCancel = { _ -> })
     }
     btn_wx_share_video.setOnClickListener {
-      Social.share(this, getType(),
+      com.yin.social.Social.share(this, getType(),
         img = createBitmap(),                  // img必须传
         title = "test",
         videoUrl = URL.VIDEO_URL, // 必须传
@@ -78,7 +78,7 @@ class WXActivity : AppCompatActivity() {
         onCancel = { _ -> })
     }
     btn_wx_share_text.setOnClickListener {
-    Social.share(this, getType(),
+    com.yin.social.Social.share(this, getType(),
         text = "测试",   // 必传
         onSuccess = { type ->
 //          toast("$type 分享成功")
@@ -89,7 +89,7 @@ class WXActivity : AppCompatActivity() {
         onCancel = { _ -> })
     }
     btn_wx_share_web.setOnClickListener {
-      Social.share(this, getType(),
+      com.yin.social.Social.share(this, getType(),
         img = createBitmap(),      // img必须传
         title = "test",
         webUrl = URL.WEB_URL,     // 网页必传
@@ -104,7 +104,7 @@ class WXActivity : AppCompatActivity() {
     }
 
     btn_wx_auth.setOnClickListener {
-     Social.auth(this, PlatformType.WEIXIN,
+     com.yin.social.Social.auth(this, PlatformType.WEIXIN,
         onSuccess = { type, map ->
 //          toast("$type 登录成功")
           map?.let {
@@ -118,7 +118,7 @@ class WXActivity : AppCompatActivity() {
     }
 
     btn_wx_pay.setOnClickListener {
-    Social.pay(context = this,
+    com.yin.social.Social.pay(context = this,
         type = PlatformType.WEIXIN,
         appid = "wx650323cf15620a10",
         noncestr = "jmF8wF",

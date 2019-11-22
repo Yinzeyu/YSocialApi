@@ -9,9 +9,9 @@ import android.graphics.Paint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aimymusic.aimysociallib.URL
-import com.yin.sociallibrary.Social
-import com.yin.sociallibrary.config.PlatformType
-import com.yin.sociallibrary.utils.CallbackDataUtil
+import com.yin.social.Social
+import com.yin.social.config.PlatformType
+import com.yin.social.utils.CallbackDataUtil
 import kotlinx.android.synthetic.main.activity_wb.*
 
 class WBActivity : AppCompatActivity() {
@@ -32,13 +32,13 @@ class WBActivity : AppCompatActivity() {
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
-    Social.onActivityResult(requestCode, resultCode, data)
+    com.yin.social.Social.onActivityResult(requestCode, resultCode, data)
   }
 
 
   private fun initEvent() {
     btn_wb_share_img.setOnClickListener {
-     Social.share(this, PlatformType.SINA_WEIBO,
+     com.yin.social.Social.share(this, PlatformType.SINA_WEIBO,
         img = createBitmap(),                  // 除了分享文本外，其他分享img都必须传
         text = "测试",
         onSuccess = { type ->
@@ -50,7 +50,7 @@ class WBActivity : AppCompatActivity() {
         onCancel = { _ -> })
     }
     btn_wb_share_text.setOnClickListener {
-     Social.share(this, PlatformType.SINA_WEIBO,
+     com.yin.social.Social.share(this, PlatformType.SINA_WEIBO,
         img = createBitmap(),                  // 除了分享文本外，其他分享img都必须传
         text = "测试",
         onSuccess = { type ->
@@ -62,7 +62,7 @@ class WBActivity : AppCompatActivity() {
         onCancel = { _ -> })
     }
     btn_wb_share_web.setOnClickListener {
-      Social.share(this, PlatformType.SINA_WEIBO,
+      com.yin.social.Social.share(this, PlatformType.SINA_WEIBO,
         img = createBitmap(),                  // 除了分享文本外，其他分享img都必须传
         webUrl = URL.WEB_URL,
         description = "测试",
@@ -76,7 +76,7 @@ class WBActivity : AppCompatActivity() {
         onCancel = { _ -> })
     }
     btn_wb_share_video.setOnClickListener {
-     Social.share(this, PlatformType.SINA_WEIBO,
+     com.yin.social.Social.share(this, PlatformType.SINA_WEIBO,
         img = createBitmap(),                  // 除了分享文本外，其他分享img都必须传
         videoUrl = "file:///android_asset/test.mp4",
         description = "测试",
@@ -95,8 +95,8 @@ class WBActivity : AppCompatActivity() {
   }
 
   private fun exampleForAuth(){
-    if(Social.available4Plat(PlatformType.SINA_WEIBO)){
-      Social.auth(this, PlatformType.SINA_WEIBO, onSuccess = {
+    if(com.yin.social.Social.available4Plat(PlatformType.SINA_WEIBO)){
+      com.yin.social.Social.auth(this, PlatformType.SINA_WEIBO, onSuccess = {
         type, map ->
 //        toast("登录成功")
         map?.let {

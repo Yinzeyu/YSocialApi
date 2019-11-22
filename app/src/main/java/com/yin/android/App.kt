@@ -1,10 +1,10 @@
 package com.yin.android
 
 import android.app.Application
-import com.yin.sociallibrary.config.PlatformType
-import com.yin.sociallibrary.entity.platform.CommPlatConfigBean
-import com.yin.sociallibrary.entity.platform.SinaPlatConfigBean
-import com.yin.sociallibrary.Social
+import com.yin.social.config.PlatformType
+import com.yin.social.entity.platform.CommPlatConfigBean
+import com.yin.social.entity.platform.SinaPlatConfigBean
+import com.yin.social.Social
 
 /**
  * description :
@@ -19,7 +19,7 @@ class App : Application() {
   }
 
   private fun initSocial() {
-    Social.init(
+    com.yin.social.Social.init(
       applicationContext,
       CommPlatConfigBean(PlatformType.WEIXIN, ""),  // 微信key
       CommPlatConfigBean(PlatformType.QQ, appkey = ""), // qqkey
